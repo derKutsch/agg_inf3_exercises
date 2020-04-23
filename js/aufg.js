@@ -43,6 +43,6 @@ document.getElementById('aufg_name').innerHTML = '<h3 class="card-title">Dividie
 document.getElementById('aufg_container').innerHTML = '<h4 class="card-title">Das Ergebnis von <i><u>'+z1+'</u></i> dividiert durch <i><u>'+z2+'</u></i> lautet:</h4>';
 document.getElementById('aufg_content').innerHTML = '<h4 class="card-title">'+z1/z2+'</h4>';
 	
-document.getElementById('code_content').innerHTML = '<pre><code>var <var>z1</var> = prompt("Welche Zahl m&ouml;chten Sie dividieren?");<br>var <var>z2</var><br>do{<br><var>z2</var> = prompt("Durch welche Zahl m&ouml;ten Sie dividieren?");<br>while(Number(<var>z2</var>) == 0);<br><br>var <var>ergebnis</var> = <var>z1</var>/<var>z2</var></code></pre>';
+document.getElementById('code_content').innerHTML = '<pre><code>var <var>z1</var> = prompt("Welche Zahl m&ouml;chten Sie dividieren?");<br>var <var>z2</var><br>do{<br><var>z2</var> = prompt("Durch welche Zahl m&ouml;cten Sie dividieren?");<br>while(Number(<var>z2</var>) == 0);<br><br>var <var>ergebnis</var> = <var>z1</var>/<var>z2</var></code></pre>';
 	
 }
