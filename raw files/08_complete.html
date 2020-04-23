@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3 Wege Dezimal in Hex umzuwandeln!</title>
+<script type="text/javascript">
+
+	//The easiest and cleanest way
+
+	function HexWithToString()
+	{
+		//Math.random()*16777215 == (r)255*(g)255*(b)255
+		var randCol = Math.floor(Math.random()*16777215);
+		//randCol.toString(16) == Convert Number to Hex base
+		var randColHex = randCol.toString(16);
+		//set BgColor with a seperate function
+		setBgColor(randColHex);
+	}
+
+	//Not so easy but managable
+
+	function HexWithArray(r,g,b)
+	{
+
+		console.log('ROT: '+r+' GRUEN: '+g+' BLAU: '+b);
+		//Calculate the final color
+		var decNumber=Math.floor(Math.random()*r*g*b);
+		//remainer is needed for calculation (modulo)
+		var remainer;
+		//blanko String for final HEX-Value
+		var hexString="";
+		//Charset for HEX
+		var charsinHex=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+		while(decNumber>0)
+		{
+			//finding the correct char    e.g. 255 mod 16 ==> 15
+			remainer=decNumber%16;
+			console.log("remainer=decNumber%16     " +remainer);
+			//lookup in Charset what char is correspondent to remainer and put it in the front of the hexString  	e.g. 15 ==> F
+			hexString=charsinHex[remainer] + hexString;
+			console.log("hexString=charsinHex[remainer] + hexString    " + hexString);
+			//divide remainer by 16 and round it, (practical reasons)					e.g. 255/16 ==> 15.9375 <- Thats Bad, 16 is Better
+			decNumber=Math.floor(decNumber/16);
+			console.log("decNumber=Math.floor(decNumber/16):     " +decNumber);
+		}
+		//set BgColor with a seperate function
+		setBgColor(hexString);
+	}
+
+	//No way, thats to slow and just the crappy way
+
+	//At the Moment I don't have the nerves to comment this all
+
+	function HexWithCompleteCalculation(){
+		var hexColorString = "";	
+		for (var i = 0; i <= 2; i++) {
+		var random=Math.floor(Math.random()*255);
+			while(random>0)
+			{
+				var remain = random%16;
+				console.log('remain		'+remain);
+				switch(remain)
+				{
+					case 10: hexColorString = "A"+hexColorString; break;
+					case 11: hexColorString = "B"+hexColorString; break;
+					case 12: hexColorString = "C"+hexColorString; break;
+					case 13: hexColorString = "D"+hexColorString; break;
+					case 14: hexColorString = "E"+hexColorString; break;
+					case 15: hexColorString = "F"+hexColorString; break;
+					default: hexColorString = remain+hexColorString;
+				}
+				console.log('hexColorString		'+hexColorString);
+				random=Math.floor(random/16);
+				console.log('random		'+random);
+			}
+
+		hexColorString = String(hexColorString);
+		console.log('hexColorString to check	'+hexColorString);
+		console.log('hexColorString length 		'+hexColorString.length);
+		if (hexColorString.length == 1) {
+			hexColorString = "0"+hexColorString;
+		} else if (hexColorString.length == 3) {
+			hexColorString = "0"+hexColorString;
+		} else if (hexColorString.length == 5) {
+			hexColorString = "0"+hexColorString;
+		} 
+	}
+	console.log('Done, final String 	'+hexColorString);
+	setBgColor(hexColorString);
+}
+
+
+
+	function setBgColor(color){
+		//Hex Value require '#' befor String
+		document.body.style.backgroundColor="#"+color;
+		alert("Es wird nun die Farbe #"+color+" angezeigt!");
+	}
+
+
+</script>
+</head>
+
+<body>
+	<h1>Was f&uuml;r ein Zufall...</h1>
+	<form>
+	<input type="button" value="Hex mit toString() Methode" onClick="HexWithToString()"><br>
+	<input type="button" value="Hex mit Array Variante" onClick="HexWithArray('255','255','255')"><br>
+	<input type="button" value="Hex mit kompletter Berechnung" onClick="HexWithCompleteCalculation()">
+	</form>
+	
+</body>
+</html>
